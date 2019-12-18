@@ -20,10 +20,11 @@ router.post('/', (req, res) => {
 
         const token = tokenHelpers.signToken(userInfo)
         res.status(201).json(
-            token,
-            {message: `Created user ${userInfo.username} with an id of ${userInfo.id}`}
             
-            )
+            {
+                token,
+                message: `Created user ${userInfo.username} with an id of ${userInfo.id}`
+        })
     })
     .catch(err => {
         res.status(500).json({error: `Internal, faliure to create user, ${err}`})

@@ -20,12 +20,12 @@ function add(userBody){
 
 function findUsers(){
     return db('registeredUsers')
-            .select('id', 'username')
+            .select('id', 'username', 'department')
 }
 
 function findUsersBy(propertyValue){
     return db('registeredUsers')
-            .select('id', 'username', 'password')
+            .select('id', 'username', 'password', 'department')
             .where(propertyValue)
             .first()
 }

@@ -9,8 +9,9 @@ module.exports ={
 
 function signToken(user){
     const payload = {
+        id: user.id,
       username:user.username,
-      department: user.department //this will come from the database
+      department:user.department //this will come from the database
     };
     
     const secret = process.env.JWT_SECRET;

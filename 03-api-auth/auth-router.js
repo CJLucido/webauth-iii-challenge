@@ -25,8 +25,10 @@ router.post('/', (req,res)=>{ //don't forget that you've already stated that thi
                 const token = tokenHelpers.signToken(user);
                // res.cookie('user_id', user.id, { maxAge: 900000, httpOnly: true }) ;
                 res.status(200).json(
-                    token,
-                    {message: `Logged in, user id: ${user.id}`
+                    
+                    {
+                        token,
+                        message: `Logged in, user id: ${user.id}`
                 
                 })
             }else{
