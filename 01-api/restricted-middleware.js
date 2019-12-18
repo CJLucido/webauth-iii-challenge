@@ -1,13 +1,14 @@
 const jwt = require('jsonwebtoken')
 
+
+
 module.exports = {
   restrictedAuthZ,
   checkDepartment
 } 
 
 
-
-const restrictedAuthZ = (req, res, next) => {
+function restrictedAuthZ (req, res, next)  {
   const {token} = req.headers;
 
   const secret = process.env.JWT_SECRET
