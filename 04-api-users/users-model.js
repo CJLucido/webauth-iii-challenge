@@ -4,7 +4,8 @@ const db = require('../data/db-config')
 module.exports = {
     add,
     findUsers,
-    findUsersBy
+    findUsersBy,
+    findBy
 }
 
 function add(userBody){
@@ -28,6 +29,13 @@ function findUsersBy(propertyValue){
             .select('id', 'username', 'password', 'department')
             .where(propertyValue)
             .first()
+}
+
+function findBy(propertyValue){
+    return db('registeredUsers')
+            .select('id', 'username', 'department')
+            .where(propertyValue)
+            
 }
 
 //ALTERNATE HELPER FUNCTION MODEL
