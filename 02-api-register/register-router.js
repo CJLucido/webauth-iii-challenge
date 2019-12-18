@@ -2,6 +2,8 @@ const router = require('express').Router();
 
 const bcrypt = require('bcryptjs');
 
+const tokenHelpers = require('../01-api/token-helpers')
+
 const Users = require('../04-api-users/users-model');
 
 
@@ -15,7 +17,13 @@ router.post('/', (req, res) => {
 
     Users.add(user)
     .then(userInfo => {
-        res.status(201).json({message: `Created user ${userInfo.username} with an id of ${userInfo.id}`})
+
+        const token = tokenHelpers.signToken(userInfo)
+        res.status(201).json(
+            token,
+            {message: `Created user ${userInfo.username} with an id of ${userInfo.id}`}
+            
+            )
     })
     .catch(err => {
         res.status(500).json({error: `Internal, faliure to create user, ${err}`})
